@@ -1,0 +1,91 @@
+﻿@using EntityLayer.Concrete;
+@model List<EnglishVocabulary>
+@{
+    ViewData["Title"] = "GetVocabularyWithLevel";
+    Layout = "~/Views/MainPage/Index.cshtml";
+    List<string> list = new List<string>();
+    list.Add("A1");
+    list.Add("A2");
+    list.Add("B1");
+    list.Add("B2");
+    list.Add("C1");
+    list.Add("C2");
+
+}
+<style>
+    .card {
+        width: 300px;
+        height: 200px;
+        perspective: 1000px;
+    }
+
+    .card-inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.600s;
+    }
+
+    .card:hover .card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+    }
+
+    .card-front {
+        transform: rotateY(0deg);
+        text-align: center;
+        justify-items: center;
+        font-size: 30px;
+    }
+
+    .card-back {
+        transform: rotateY(180deg);
+        text-align: center;
+        align-items: baseline;
+        font-size: 30px;
+    }
+</style>
+
+<h1>GetVocabularyWithLevel</h1>
+
+
+
+
+<div class="btnbtn-group btn-group-justified pb-3">
+         <a href="/LanguageTranslate/GetVocabularyWithLevel/@list[0] " class="btn btn-outline-warning ">A1 Words</a>
+        <a href="/LanguageTranslate/GetVocabularyWithLevel/@list[1]" class="btn btn-outline-warning ">A2 Words</a>
+        <a href="/LanguageTranslate/GetVocabularyWithLevel/@list[2]" class="btn btn-outline-warning ">B1 Words</a>
+        <a href="/LanguageTranslate/GetVocabularyWithLevel/@list[3]" class="btn btn-outline-warning ">B2 Words</a>
+        <a href="/LanguageTranslate/GetVocabularyWithLevel/@list[4]" class="btn btn-outline-warning ">C1 Words</a>
+        <a href="/LanguageTranslate/GetVocabularyWithLevel/@list[5]" class="btn btn-outline-warning ">C2 Words</a>
+</div>
+
+
+
+
+<div class="container p-3">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="card p-3 m-2">
+                <div class="card-inner">
+                    <div class="card-front bg-warning">
+                        <p>@item.EnglishWord</p>
+                    </div>
+                    <div class="card-back bg-warning">
+                        <p>@item.TurkishWord</p>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

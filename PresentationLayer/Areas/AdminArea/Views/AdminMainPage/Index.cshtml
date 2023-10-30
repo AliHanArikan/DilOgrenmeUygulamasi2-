@@ -1,0 +1,19 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+@await Component.InvokeAsync("_StoryDetailsLayoutHeaderPartial")
+<body>
+    @await Component.InvokeAsync("_StoryDetailsNavbarPartial")
+
+    <div class="container body">
+        @RenderBody()
+    </div
+
+    @await Component.InvokeAsync("_StroyDetailsFooterPartial")
+</body>
+</html>

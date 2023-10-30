@@ -1,0 +1,27 @@
+﻿@using DtoLayer.Dtos.EnglishStoryDtos;
+@model EnglishStoryDto
+@{
+    ViewData["Title"] = "UpdateStory";
+    Layout = "~/Areas/AdminArea/Views/AdminMainPage/Index.cshtml";
+}
+
+
+       <form method="post">
+            <div class="form-group mb-3">
+                @Html.Label("English Story Name")
+                <input asp-for="EnglishStoryName" />
+              
+            </div>
+            <div class="form-group mb-3">
+                @Html.Label("English Story Image Url")
+                <input asp-for="EnglishStoryName" />
+              
+            </div>
+            <div class="form-group mb-3">
+                @Html.Label("English Story Description")
+                <textarea cols="30" rows="18" asp-for="EnglishStoryDescription"></textarea>
+                
+            </div>
+       </form>
+
+

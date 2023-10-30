@@ -1,0 +1,48 @@
+﻿@using EntityLayer.Concrete;
+@model List<EnglishTopic>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/MainPage/Index.cshtml";
+    
+}
+
+
+<div class="container p-3">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col ">
+                <div class="card">
+                    <img src="~/@item.EnglishTopicImageUrl" class="card-img-top" alt="..." width="200px" height="250px">
+
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a class="btn btn-outline-warning" href="/EnglishTopic/LessonContentDetail/@item.EnglishTopicID">@item.EnglishTopicName </a>
+                        </h5>
+
+                        <p class="card-text">@item.EnglishTopicDescription This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+@* <div class="container">
+    <h1 class="text-center">Konular</h1>
+@foreach(var item in Model)
+{
+    
+        <div class="card text-center bg-outline-warning p-2 mt-3">
+           <div class="card-header">
+                <a class="btn btn-outline-warning" href="/EnglishTopic/LessonContentDetail/@item.EnglishTopicID">@item.EnglishTopicName </a>
+            </div>
+            <div class="card-body">
+               <p class="card-text">@item.EnglishTopicDescription</p>
+            </div>
+        </div>
+                
+    }
+</div> *@
+

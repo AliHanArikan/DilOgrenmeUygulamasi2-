@@ -1,0 +1,28 @@
+﻿@using EntityLayer.Concrete;
+@model List<EnglishVocabulary>
+@{
+    ViewData["Title"] = "Default";
+    Layout = "~/Views/MainPage/Index.cshtml";
+}
+
+<h1>Default</h1>
+<div class="container p-3">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="card p-3 m-2">
+                <div class="card-inner">
+                    <div class="card-front bg-warning">
+                        <p >@item.EnglishWord</p>
+                    </div>
+                    <div class="card-back bg-warning">
+                        <p>@item.TurkishWord</p>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+

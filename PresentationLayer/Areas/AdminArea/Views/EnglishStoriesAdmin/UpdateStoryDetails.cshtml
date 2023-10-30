@@ -1,0 +1,69 @@
+﻿@using DtoLayer.Dtos.EnglishStoryDetailsDtos;
+
+@model EnglishUpdateStoryDto
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-warning pb-3 mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="javascript:void(0)">Admin Panel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">English</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">Spanish</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">French</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="text" placeholder="Search">
+                    <button class="btn btn-primary" type="button">Ara</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <h1>
+        Story Update Page
+    </h1>
+    <form method="post">
+        <div class="form-group mb-3">
+            @Html.Label("Hikaye adı")
+            <input asp-for="EnglishStoryName" />
+            <span asp-validation-for="EnglishStoryName"></span>
+
+        </div>
+        <div class="form-group mb-3">
+            @Html.Label("Hikaye adı")
+            <input asp-for="EnglishStoryImageUrl" />
+            <span asp-validation-for="EnglishStoryImageUrl"></span>
+        </div>
+        <div class="form-group mb-3 justify-content-between">
+            @Html.Label("Hikaye adı")
+            <textarea cols="30" rows="18" class="form-control" asp-for="EnglishStoryDescription"></textarea>
+            <span asp-validation-for="EnglishStoryDescription"></span>
+        </div>
+
+        <button class="btn btn-success text-end" type="submit">Güncelle</button>
+    </form>
+</body>
+</html>
