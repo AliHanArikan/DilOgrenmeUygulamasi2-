@@ -15,7 +15,7 @@ namespace DataAccessLayer.Concrete
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             
-            optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB;database=LearnLangueDb;integrated security=true;");
+            optionsBuilder.UseSqlServer("");
         }
 
         public DbSet<EnglishLessonContent> EnglishLessonContents { get; set; }
