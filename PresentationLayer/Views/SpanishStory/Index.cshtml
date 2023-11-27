@@ -1,0 +1,43 @@
+﻿@using EntityLayer.Concrete;
+@model List<SpanishStory>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/MainPage/Index.cshtml";
+}
+
+<style>
+    .card-text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .card-img-top:hover {
+        opacity: 0.7;
+    }
+</style>
+
+<div class="container">
+    <h4>Spanish A1 Stories</h4>
+</div>
+<div class="container p-3">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col ">
+                <div class="card">
+                    <img src="~/@item.SpanishStoryImageUrl" class="card-img-top" alt="..." width="300px" height="350px">
+                    <div class="card-body">
+                        <h5 class="card-title"><a class="btn btn-warning" href="/EnglishStroy/EnglishStoryDetails2/@item.SpanishStoryID">@item.SpanishStoryName</a></h5>
+
+                        <p class="card-text">@item.SpanishStoryDescription This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+
+

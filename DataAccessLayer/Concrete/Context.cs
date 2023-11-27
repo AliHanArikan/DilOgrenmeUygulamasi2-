@@ -14,8 +14,8 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //veritabanı adi
-            optionsBuilder.UseSqlServer("");
+            
+            optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB;database=LearnLangueDb;integrated security=true;");
         }
 
         public DbSet<EnglishLessonContent> EnglishLessonContents { get; set; }
@@ -31,6 +31,8 @@ namespace DataAccessLayer.Concrete
         public DbSet<FrenchStory> FrenchStories { get; set; }
 
         public DbSet<SpanishWords> SpanishWords { get; set; }
+
+        public DbSet<SpanishStory> SpanishStories { get; set;}
        
     }
 }

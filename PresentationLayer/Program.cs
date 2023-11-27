@@ -1,8 +1,12 @@
 using BusinessLayer.Abstract;
+using BusinessLayer.Abstract.Spanish;
 using BusinessLayer.Concrete;
+using BusinessLayer.Concrete.Spanish;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Abstract.French;
+using DataAccessLayer.Abstract.Spanish;
 using DataAccessLayer.EnttiyFramework;
+using DataAccessLayer.EnttiyFramework.EfSpanish;
 using DataAccessLayer.EnttiyFramework.French;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +34,9 @@ builder.Services.AddScoped<IEnglishTopicNameService, EnglishTopicNameManager>();
 
 builder.Services.AddScoped<IEnglishLessonContentDal, EfEnglishLessonContentDal>();
 builder.Services.AddScoped<IEnglishLessonContentService, EnglishLessonContentManager>();
+
+builder.Services.AddScoped<ISpanishStoryDal, EfSpanishStoryDal>();
+builder.Services.AddScoped<ISpanishStoryService, SpanishStoryManager>();
 
 var app = builder.Build();
 
