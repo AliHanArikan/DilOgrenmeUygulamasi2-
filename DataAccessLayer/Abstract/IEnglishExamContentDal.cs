@@ -11,5 +11,7 @@ namespace DataAccessLayer.Abstract
     {
         public EnglishExamContent GetEnglishExamContentWithStoryName(string storyName);
         public List<EnglishExamContent> GetEnglishExamListContentWithStoryName(string storyName);
+
+        public void UpdateEnglishExamWithStoryName(List<EnglishExamContent> listContent,string englishStoryName);
     }
 }

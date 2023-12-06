@@ -38,6 +38,9 @@ builder.Services.AddScoped<IEnglishLessonContentService, EnglishLessonContentMan
 builder.Services.AddScoped<ISpanishStoryDal, EfSpanishStoryDal>();
 builder.Services.AddScoped<ISpanishStoryService, SpanishStoryManager>();
 
+builder.Services.AddScoped<ISpanishStoryDetailDal, EfSpanishStoryDetailDal>();
+builder.Services.AddScoped<ISpanishStoryDetailService, SpanishStoryDetailManager>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

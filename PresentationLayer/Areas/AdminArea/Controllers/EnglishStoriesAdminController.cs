@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using DtoLayer.Dtos.EnglishQuestionsDtos;
 using DtoLayer.Dtos.EnglishStoryDetailsDtos;
 using DtoLayer.Dtos.EnglishStoryDtos;
 using EntityLayer.Concrete;
@@ -11,10 +12,12 @@ namespace PresentationLayer.Areas.AdminArea.Controllers
     {
         private readonly IEnglishStoryDetailsService _englishStoryDetailsService;
         private readonly IEnglishStoryService _englishStoryService;
-        public EnglishStoriesAdminController(IEnglishStoryDetailsService englishStoryDetailsService, IEnglishStoryService englishStoryService)
+        private readonly IEnglishExamContentService _englishExamContentService;
+        public EnglishStoriesAdminController(IEnglishStoryDetailsService englishStoryDetailsService, IEnglishStoryService englishStoryService, IEnglishExamContentService englishExamContentService)
         {
             _englishStoryDetailsService = englishStoryDetailsService;
             _englishStoryService = englishStoryService;
+            _englishExamContentService = englishExamContentService;
         }
 
         [HttpGet]
@@ -91,6 +94,16 @@ namespace PresentationLayer.Areas.AdminArea.Controllers
             _englishStoryService.TUpdate(englishStory);
             return RedirectToAction("Index", "EnglishStoriesAdmin");
         }
+
+        [HttpGet]
+        public IActionResult UpdateQuestions(int id)
+        {
+            var valueName = _englishStoryService.TGetByID(id).EnglishStoryName;
+            var values = _englishExamContentService.TGetEnglishExamContentListWithStoryName(valueName);
+            return View(values);
+
+        }
+
 
     }
 }

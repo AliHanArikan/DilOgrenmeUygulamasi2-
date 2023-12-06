@@ -27,5 +27,10 @@ namespace DataAccessLayer.EnttiyFramework
                 return contex.EnglishExamContents.Where(x => x.EnglishStoryName == storyName).ToList();
             }
         }
+
+        public void UpdateEnglishExamWithStoryName(List<EnglishExamContent> listContent,string englishStoryName)
+        {
+           
+        }
     }
 }
