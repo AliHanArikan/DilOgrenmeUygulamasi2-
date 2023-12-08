@@ -35,6 +35,7 @@ namespace DataAccessLayer.Concrete
         public DbSet<SpanishStory> SpanishStories { get; set;}
 
         public DbSet<SpanishStoryDetail> spanishStoryDetails { get; set; }
+        public DbSet<SpanishExamContent> SpanishExamContents { get; set; }
        
     }
 }

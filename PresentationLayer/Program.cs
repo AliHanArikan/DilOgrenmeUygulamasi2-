@@ -8,38 +8,16 @@ using DataAccessLayer.Abstract.Spanish;
 using DataAccessLayer.EnttiyFramework;
 using DataAccessLayer.EnttiyFramework.EfSpanish;
 using DataAccessLayer.EnttiyFramework.French;
+using FluentValidation.AspNetCore;
+using PresentationLayer.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddFluentValidation();
 
-builder.Services.AddScoped<IEnglishVocabularyDal,EfEnglishVocabularyDal>();
-builder.Services.AddScoped<IEnglishVocabularyService,EnglishVocabularyManager>();
 
-builder.Services.AddScoped<IEnglishStoryDal,EfEnglishStoryDal>();
-builder.Services.AddScoped<IEnglishStoryService,EnglishStoryManager>();
-
-builder.Services.AddScoped<IEnglishStoryDetailsDal, EfEnglishStoryDetailsDal>();
-builder.Services.AddScoped<IEnglishStoryDetailsService, EnglishStoryDetailsManager>();
-
-builder.Services.AddScoped<IEnglishExamContentDal, EfEnglishExamContentDal>();
-builder.Services.AddScoped<IEnglishExamContentService,EnglishExamContentManager>();
-
-builder.Services.AddScoped<IFrenchStoryDal, EfFrenchStoryDal>();
-builder.Services.AddScoped<IFrenchStoryService, FrenchStoryManager>();
-
-builder.Services.AddScoped<IEnglishTopicNameDal, EfEnglishTopicNameDal>();
-builder.Services.AddScoped<IEnglishTopicNameService, EnglishTopicNameManager>();
-
-builder.Services.AddScoped<IEnglishLessonContentDal, EfEnglishLessonContentDal>();
-builder.Services.AddScoped<IEnglishLessonContentService, EnglishLessonContentManager>();
-
-builder.Services.AddScoped<ISpanishStoryDal, EfSpanishStoryDal>();
-builder.Services.AddScoped<ISpanishStoryService, SpanishStoryManager>();
-
-builder.Services.AddScoped<ISpanishStoryDetailDal, EfSpanishStoryDetailDal>();
-builder.Services.AddScoped<ISpanishStoryDetailService, SpanishStoryDetailManager>();
+builder.Services.ConfigureService();
 
 var app = builder.Build();
 

@@ -56,12 +56,7 @@ namespace PresentationLayer.Areas.AdminArea.Controllers
                 EnglishStoryImageUrl = englishUpdateStoryDto.EnglishStoryImageUrl,
             };
 
-            //var valueEnglishStory = new EnglishStory()
-            //{
-            //    EnglishStoryImageUrl= englishUpdateStoryDto.EnglishStoryImageUrl,
-            //    EnglishStoryName = englishUpdateStoryDto.EnglishStoryName,
-            //};
-            //_englishStoryService.TUpdate(valueEnglishStory);
+           
 
             _englishStoryDetailsService.TUpdate(valueEnglishStoryDetails);
             
@@ -71,6 +66,7 @@ namespace PresentationLayer.Areas.AdminArea.Controllers
         [HttpGet]
         public IActionResult UpdateStory(int id)
         {
+            
             var value = _englishStoryService.TGetByID(id);
             var valueDto = new EnglishStoryDto()
             {
@@ -84,15 +80,20 @@ namespace PresentationLayer.Areas.AdminArea.Controllers
         [HttpPost]
         public IActionResult UpdateStory(EnglishStoryDto englishStoryDto)
         {
-            var englishStory = new EnglishStory()
+            if (ModelState.IsValid)
             {
-                EnglishStoryName = englishStoryDto.EnglishStoryName,
-                EnglishStoryImageUrl = englishStoryDto.EnglishStoryImageUrl,
-                EnglishStoryDescription= englishStoryDto.EnglishStoryDescription,
-            };
+                var englishStory = new EnglishStory()
+                {
+                    EnglishStoryName = englishStoryDto.EnglishStoryName,
+                    EnglishStoryImageUrl = englishStoryDto.EnglishStoryImageUrl,
+                    EnglishStoryDescription = englishStoryDto.EnglishStoryDescription,
+                };
 
-            _englishStoryService.TUpdate(englishStory);
-            return RedirectToAction("Index", "EnglishStoriesAdmin");
+                _englishStoryService.TUpdate(englishStory);
+                return RedirectToAction("Index", "EnglishStoriesAdmin");
+            }
+            return View();
+            
         }
 
         [HttpGet]
