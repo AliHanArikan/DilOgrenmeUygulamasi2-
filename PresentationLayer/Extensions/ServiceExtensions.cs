@@ -48,6 +48,8 @@ namespace PresentationLayer.Extensions
 
             services.AddScoped<ISpanishExamDal, EfSpanishExamDal>();
             services.AddScoped<ISpanishExamService, SpanishExamManager>();
+
+            services.AddSingleton<ILoggerService, LoggerManager>();
         }
     }
 }

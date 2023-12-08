@@ -21,6 +21,8 @@ builder.Services.ConfigureService();
 
 var app = builder.Build();
 
+var logger = app.Services.GetRequiredService<ILoggerService>();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

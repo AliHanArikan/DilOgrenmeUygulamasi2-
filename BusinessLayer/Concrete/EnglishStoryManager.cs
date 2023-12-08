@@ -12,19 +12,29 @@ namespace BusinessLayer.Concrete
     public class EnglishStoryManager : IEnglishStoryService
     {
         private readonly IEnglishStoryDal _englishStoryDal;
+        private readonly ILoggerService _loggerService;
 
-        public EnglishStoryManager(IEnglishStoryDal englishStoryDal)
+        public EnglishStoryManager(IEnglishStoryDal englishStoryDal, ILoggerService loggerService)
         {
             _englishStoryDal = englishStoryDal;
+            _loggerService = loggerService;
         }
 
         public List<EnglishStory> GetAll()
         {
+            
+            
            return _englishStoryDal.GetAll();
         }
 
         public void TDelete(EnglishStory t)
         {
+
+            if(t == null)
+            {
+                string message = "This value is null";
+                _loggerService.LogInfo(message);
+            }
             _englishStoryDal.Delete(t);
         }
 
@@ -40,6 +50,11 @@ namespace BusinessLayer.Concrete
 
         public void TUpdate(EnglishStory t)
         {
+            if (t == null)
+            {
+                string message = "This value is null";
+                _loggerService.LogInfo(message);
+            }
             _englishStoryDal.Update(t);
         }
     }

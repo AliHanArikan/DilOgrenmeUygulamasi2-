@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Abstract;
+﻿using AutoMapper;
+using BusinessLayer.Abstract;
 using DtoLayer.Dtos.EnglishQuestionsDtos;
 using DtoLayer.Dtos.EnglishStoryDetailsDtos;
 using DtoLayer.Dtos.EnglishStoryDtos;
@@ -13,11 +14,13 @@ namespace PresentationLayer.Areas.AdminArea.Controllers
         private readonly IEnglishStoryDetailsService _englishStoryDetailsService;
         private readonly IEnglishStoryService _englishStoryService;
         private readonly IEnglishExamContentService _englishExamContentService;
-        public EnglishStoriesAdminController(IEnglishStoryDetailsService englishStoryDetailsService, IEnglishStoryService englishStoryService, IEnglishExamContentService englishExamContentService)
+        private readonly IMapper _mapper;
+        public EnglishStoriesAdminController(IEnglishStoryDetailsService englishStoryDetailsService, IEnglishStoryService englishStoryService, IEnglishExamContentService englishExamContentService, IMapper mapper)
         {
             _englishStoryDetailsService = englishStoryDetailsService;
             _englishStoryService = englishStoryService;
             _englishExamContentService = englishExamContentService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -39,9 +42,10 @@ namespace PresentationLayer.Areas.AdminArea.Controllers
             var valueDto = new EnglishUpdateStoryDto()
             {
                 EnglishStoryName = value.EnglishStoryDetailsName,
-                EnglishStoryImageUrl= value.EnglishStoryImageUrl,
-                EnglishStoryDescription= value.EnglishStoryDetailsContent
+                EnglishStoryImageUrl = value.EnglishStoryImageUrl,
+                EnglishStoryDescription = value.EnglishStoryDetailsContent
             };
+            // var valueDto = _mapper.Map<value>(valueDto);
             return View(valueDto);
         }
         
@@ -49,14 +53,15 @@ namespace PresentationLayer.Areas.AdminArea.Controllers
         
         public IActionResult UpdateStoryDetails(EnglishUpdateStoryDto englishUpdateStoryDto)
         {
-            var valueEnglishStoryDetails = new EnglishStoryDetails()
-            {
-                EnglishStoryDetailsContent = englishUpdateStoryDto.EnglishStoryDescription,
-                EnglishStoryDetailsName= englishUpdateStoryDto.EnglishStoryName,
-                EnglishStoryImageUrl = englishUpdateStoryDto.EnglishStoryImageUrl,
-            };
+            //var valueEnglishStoryDetails = new EnglishStoryDetails()
+            //{
+            //    EnglishStoryDetailsContent = englishUpdateStoryDto.EnglishStoryDescription,
+            //    EnglishStoryDetailsName= englishUpdateStoryDto.EnglishStoryName,
+            //    EnglishStoryImageUrl = englishUpdateStoryDto.EnglishStoryImageUrl,
+            //};
+            var valueEnglishStoryDetails = _mapper.Map<EnglishStoryDetails>(englishUpdateStoryDto);
 
-           
+
 
             _englishStoryDetailsService.TUpdate(valueEnglishStoryDetails);
             
