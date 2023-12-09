@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using EntityLayer.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationLayer.Controllers
@@ -29,11 +30,19 @@ namespace PresentationLayer.Controllers
         
         public IActionResult EnglishStoryDetails2(int id)
         {
+            
+                
             var valueName = _storyService.TGetByID(id).EnglishStoryName;
             var valueStroies = _storyDetailsService.TGetEnglishStoryDetailsWithStoryName(valueName);
+            if (valueName is null)
+            {
+                throw new EnglishStoryDetailsNotFound(id);
+            }
 
             ViewBag.x = valueStroies.EnglishStoryDetailsName;
-            return View(valueStroies);
+             return View(valueStroies);
+           
+            
         }
 
         public IActionResult Index2()

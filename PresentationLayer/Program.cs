@@ -22,7 +22,8 @@ builder.Services.ConfigureService();
 
 var app = builder.Build();
 
-var logger = app.Services.GetRequiredService<ILoggerService>();
+var logger = app.Services.GetRequiredService<ILoggerService>(); // ihtiyaç duyduðumuz servisi alýyoruz
+app.ConfigureExceptionHandler(logger);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -32,6 +33,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+if (app.Environment.IsProduction())
+{
+    app.UseHsts();
+}
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

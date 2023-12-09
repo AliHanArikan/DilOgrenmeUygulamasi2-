@@ -1,0 +1,8 @@
+2023-12-09 20:12:10.6215 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-12-09 20:12:10.6522 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.7.2287. Product version: 5.2.7+a1ef7cd83b5a6a172142a6850f0ced4e759a4b3b. GlobalAssemblyCache: False
+2023-12-09 20:12:10.6522 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\li070\source\repos\LanguageLearningProject\PresentationLayer\bin\Debug\net6.0\NLog.config
+2023-12-09 20:12:10.6943 Info Configuration initialized.
+2023-12-09 20:50:20.2588 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-12-09 20:50:20.3287 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.7.2287. Product version: 5.2.7+a1ef7cd83b5a6a172142a6850f0ced4e759a4b3b. GlobalAssemblyCache: False
+2023-12-09 20:50:20.3514 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\li070\source\repos\LanguageLearningProject\PresentationLayer\bin\Debug\net6.0\NLog.config
+2023-12-09 20:50:20.3712 Info Configuration initialized.
