@@ -35,5 +35,11 @@ namespace PresentationLayer.Controllers
             ViewBag.x = valueStroies.EnglishStoryDetailsName;
             return View(valueStroies);
         }
+
+        public IActionResult Index2()
+        {
+            var values = _storyService.GetAll();
+            return View(values);
+        }
     }
 }

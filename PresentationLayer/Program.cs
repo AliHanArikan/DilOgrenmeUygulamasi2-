@@ -14,7 +14,8 @@ using PresentationLayer.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews().AddFluentValidation();
+builder.Services.AddControllersWithViews();
+builder.Services.AddAutoMapper(typeof(Program));
 
 
 builder.Services.ConfigureService();

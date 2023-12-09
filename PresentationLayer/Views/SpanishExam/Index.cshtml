@@ -1,40 +1,77 @@
-﻿
+﻿@using EntityLayer.Concrete;
+@model List<SpanishExamContent>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/MainPage/Index.cshtml";
+    int index = 0;
 }
 
 
 
 <div class="container">
 
-    <div class="card">
-        <div class="card-header">
-            <h4>1</h4> <strong>Burada soru tanımı bulunacaktır</strong>
+    @foreach(var item in Model)
+    {
+        <div class="card p-3 mb-3 bg-outline-warning">
+            <div class="card-header">
+                <h4>@index++</h4> <strong>@item.SpanishExamDescription</strong>
+            </div>
+            <div class="card-body">
+                <div class="mb-3 text-box">
+                    <button class="btn btn-outline-primary">A</button>
+                    <label for="question" class="form-label text-success-emphasis">@item.SpanishExamOptionA</label>
+                </div>
+                <div class="mb-3 text-box bg-info">
+                    <button class="btn btn-outline-primary">B</button>
+                    <label for="question" class="form-label">@item.SpanishExamOptionB</label>
+                </div>
+                <div class="mb-3 text-box bg-info">
+                    <button class="btn btn-outline-primary">C</button>
+                    <label for="question" class="form-label">@item.SpanishExamOptionC</label>
+                </div>
+                <div class="mb-3 text-box bg-info">
+                    <button class="btn btn-outline-primary">D</button>
+                    <label for="question" class="form-label">@item.SpanishExamOptionD</label>
+                </div>
+              
+
+            </div>
         </div>
-        <div class="card-body">
-            <div class="mb-3 text-box">
-               <button class="btn btn-outline-primary">A</button>
-                <label for="question" class="form-label text-success-emphasis">Soru:</label>
-            </div>
-            <div class="mb-3 text-box bg-info">
-                <button class="btn btn-outline-primary">B</button>
-                <label for="question" class="form-label">Soru:</label>
-            </div>
-            <div class="mb-3 text-box bg-info">
-                <button class="btn btn-outline-primary">C</button>
-                <label for="question" class="form-label">Soru:</label>
-            </div>
-            <div class="mb-3 text-box bg-info">
-                <button class="btn btn-outline-primary">D</button>
-                <label for="question" class="form-label">Soru:</label>
-            </div>
-            <div class="mb-3 text-end">
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            
-        </div>
+    }
+    <div class="mb-3 pb-5 text-end">
+        <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
+    @* @while(index != Model.Count)
+    {
+        <div class="card">
+            <div class="card-header">
+                <h4>1</h4> <strong>Burada soru tanımı bulunacaktır</strong>
+            </div>
+            <div class="card-body">
+                <div class="mb-3 text-box">
+                    <button class="btn btn-outline-primary">A</button>
+                    <label for="question" class="form-label text-success-emphasis">Soru:</label>
+                </div>
+                <div class="mb-3 text-box bg-info">
+                    <button class="btn btn-outline-primary">B</button>
+                    <label for="question" class="form-label">Soru:</label>
+                </div>
+                <div class="mb-3 text-box bg-info">
+                    <button class="btn btn-outline-primary">C</button>
+                    <label for="question" class="form-label">Soru:</label>
+                </div>
+                <div class="mb-3 text-box bg-info">
+                    <button class="btn btn-outline-primary">D</button>
+                    <label for="question" class="form-label">Soru:</label>
+                </div>
+                <div class="mb-3 text-end">
+                    <a href="#" class="btn btn-primary">Check @index++ </a>
+                </div>
+
+            </div>
+        </div>
+    } *@
+    
     @* <div class="position-relative" style="height: 100vh;">
         <div class="position-absolute top-50 start-50 translate-middle">
             <form>

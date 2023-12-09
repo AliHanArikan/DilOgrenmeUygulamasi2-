@@ -14,7 +14,7 @@ namespace PresentationLayer.Areas.AdminArea.Controllers
         private readonly IEnglishStoryDetailsService _englishStoryDetailsService;
         private readonly IEnglishStoryService _englishStoryService;
         private readonly IEnglishExamContentService _englishExamContentService;
-        private readonly IMapper _mapper;
+       private readonly IMapper _mapper;
         public EnglishStoriesAdminController(IEnglishStoryDetailsService englishStoryDetailsService, IEnglishStoryService englishStoryService, IEnglishExamContentService englishExamContentService, IMapper mapper)
         {
             _englishStoryDetailsService = englishStoryDetailsService;
@@ -45,7 +45,7 @@ namespace PresentationLayer.Areas.AdminArea.Controllers
                 EnglishStoryImageUrl = value.EnglishStoryImageUrl,
                 EnglishStoryDescription = value.EnglishStoryDetailsContent
             };
-            // var valueDto = _mapper.Map<value>(valueDto);
+            //var valueDto = _mapper.Map<valueDto>(value);
             return View(valueDto);
         }
         
@@ -56,10 +56,10 @@ namespace PresentationLayer.Areas.AdminArea.Controllers
             //var valueEnglishStoryDetails = new EnglishStoryDetails()
             //{
             //    EnglishStoryDetailsContent = englishUpdateStoryDto.EnglishStoryDescription,
-            //    EnglishStoryDetailsName= englishUpdateStoryDto.EnglishStoryName,
+            //    EnglishStoryDetailsName = englishUpdateStoryDto.EnglishStoryName,
             //    EnglishStoryImageUrl = englishUpdateStoryDto.EnglishStoryImageUrl,
             //};
-            var valueEnglishStoryDetails = _mapper.Map<EnglishStoryDetails>(englishUpdateStoryDto);
+            var valueEnglishStoryDetails = _mapper.Map<EnglishStoryDetails>(englishUpdateStoryDto); 
 
 
 
@@ -87,12 +87,13 @@ namespace PresentationLayer.Areas.AdminArea.Controllers
         {
             if (ModelState.IsValid)
             {
-                var englishStory = new EnglishStory()
-                {
-                    EnglishStoryName = englishStoryDto.EnglishStoryName,
-                    EnglishStoryImageUrl = englishStoryDto.EnglishStoryImageUrl,
-                    EnglishStoryDescription = englishStoryDto.EnglishStoryDescription,
-                };
+                //var englishStory = new EnglishStory()
+                //{
+                //    EnglishStoryName = englishStoryDto.EnglishStoryName,
+                //    EnglishStoryImageUrl = englishStoryDto.EnglishStoryImageUrl,
+                //    EnglishStoryDescription = englishStoryDto.EnglishStoryDescription,
+                //};
+                var englishStory = _mapper.Map<EnglishStory>(englishStoryDto);
 
                 _englishStoryService.TUpdate(englishStory);
                 return RedirectToAction("Index", "EnglishStoriesAdmin");
