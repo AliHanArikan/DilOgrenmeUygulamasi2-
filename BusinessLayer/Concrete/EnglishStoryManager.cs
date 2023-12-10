@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
+using EntityLayer.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,11 @@ namespace BusinessLayer.Concrete
                 _loggerService.LogInfo(message);
             }
             _englishStoryDal.Delete(t);
+        }
+
+        public IEnumerable<EnglishStory> TGetAllBooksWithPaged(EnglishStoriesParameters englishStoriesParameters)
+        {
+            return _englishStoryDal.GetAllBooksWithPaged(englishStoriesParameters);
         }
 
         public EnglishStory TGetByID(int id)

@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using EntityLayer.Exceptions;
+using EntityLayer.RequestFeatures;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationLayer.Controllers
@@ -45,9 +46,21 @@ namespace PresentationLayer.Controllers
             
         }
 
+        [HttpGet]
         public IActionResult Index2()
         {
-            var values = _storyService.GetAll();
+             EnglishStoriesParameters englishStoriesParameters = new EnglishStoriesParameters();
+            englishStoriesParameters.PagesSize = 2;
+            englishStoriesParameters.PageNumber = 1;
+            var values = _storyService.TGetAllBooksWithPaged(englishStoriesParameters); 
+            return View(values);
+        }
+
+        [HttpPost]
+        public IActionResult Index2(EnglishStoriesParameters englishStoriesParameters)
+        {
+            
+            var values = _storyService.TGetAllBooksWithPaged(englishStoriesParameters);
             return View(values);
         }
     }
