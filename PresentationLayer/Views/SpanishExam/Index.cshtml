@@ -8,15 +8,18 @@
 
 
 
+
 <div class="container">
 
     @foreach(var item in Model)
     {
+        <div class="quiz">
+
         <div class="card p-3 mb-3 bg-outline-warning">
             <div class="card-header">
-                <h4>@index++</h4> <strong>@item.SpanishExamDescription</strong>
+                <h4 id="question"> <strong>@item.SpanishExamDescription</strong></h4>
             </div>
-            <div class="card-body">
+            <div id="question" class=" card-body">
                 <div class="mb-3 text-box">
                     <button class="btn btn-outline-primary">A</button>
                     <label for="question" class="form-label text-success-emphasis">@item.SpanishExamOptionA</label>
@@ -37,88 +40,28 @@
 
             </div>
         </div>
+        </div>
     }
     <div class="mb-3 pb-5 text-end">
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <button id="next-btn" href="#" class="btn btn-primary">Go somewhere</button >
     </div>
-    @* @while(index != Model.Count)
-    {
-        <div class="card">
-            <div class="card-header">
-                <h4>1</h4> <strong>Burada soru tanımı bulunacaktır</strong>
-            </div>
-            <div class="card-body">
-                <div class="mb-3 text-box">
-                    <button class="btn btn-outline-primary">A</button>
-                    <label for="question" class="form-label text-success-emphasis">Soru:</label>
-                </div>
-                <div class="mb-3 text-box bg-info">
-                    <button class="btn btn-outline-primary">B</button>
-                    <label for="question" class="form-label">Soru:</label>
-                </div>
-                <div class="mb-3 text-box bg-info">
-                    <button class="btn btn-outline-primary">C</button>
-                    <label for="question" class="form-label">Soru:</label>
-                </div>
-                <div class="mb-3 text-box bg-info">
-                    <button class="btn btn-outline-primary">D</button>
-                    <label for="question" class="form-label">Soru:</label>
-                </div>
-                <div class="mb-3 text-end">
-                    <a href="#" class="btn btn-primary">Check @index++ </a>
-                </div>
-
-            </div>
-        </div>
-    } *@
+   
     
-    @* <div class="position-relative" style="height: 100vh;">
-        <div class="position-absolute top-50 start-50 translate-middle">
-            <form>
-                <div class="mb-3 text-box">
-                    <label for="question" class="form-label">Soru:</label>
-                    <input type="text" class="form-control" id="question" placeholder="Sorunuzu buraya yazın...">
-                </div>
-                <div class="mb-3">
-                    <label for="option1" class="form-label">Şık 1:</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="option" id="option1" value="option1">
-                        <label class="form-check-label" for="option1">
-                            Şık 1
-                        </label>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="option2" class="form-label">Şık 2:</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="option" id="option2" value="option2">
-                        <label class="form-check-label" for="option2">
-                            Şık 2
-                        </label>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="option3" class="form-label">Şık 3:</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="option" id="option3" value="option3">
-                        <label class="form-check-label" for="option3">
-                            Şık 3
-                        </label>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="option4" class="form-label">Şık 4:</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="option" id="option4" value="option4">
-                        <label class="form-check-label" for="option4">
-                            Şık 4
-                        </label>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Gönder</button>
-            </form>
-        </div>
-    </div>
- *@
-
 </div>
+
+<script>
+    
+    const questionElement = document.getElementById("question");
+    const answer = document.getElementById("ans");
+    const nextButton = document.getElementById("next-btn")
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function showQuestion() {
+        let currentQuestion = questions[currentQuestionIndex];
+        let qustionNo = currentQuestionIndex + 1;
+        questionElement.innerHTML = questionNo + " . " + currentQuestion.
+            question;
+    }
+</script>                  

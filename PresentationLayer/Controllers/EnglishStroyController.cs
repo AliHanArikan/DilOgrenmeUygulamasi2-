@@ -8,7 +8,7 @@ using System.Text.Json;
 namespace PresentationLayer.Controllers
 {
     //[ResponseCache(CacheProfileName ="5mins")]
-   // [HttpCacheExpiration(CacheLocation =CacheLocation.Public, MaxAge= 80)]
+    //[HttpCacheExpiration(CacheLocation =CacheLocation.Public, MaxAge= 80)]
     public class EnglishStroyController : Controller
     {
         private readonly IEnglishStoryService _storyService;
@@ -29,10 +29,7 @@ namespace PresentationLayer.Controllers
             return View(values);
         }
 
-       
 
-        
-        
         public IActionResult EnglishStoryDetails2(int id)
         {
             
@@ -54,7 +51,7 @@ namespace PresentationLayer.Controllers
         public IActionResult Index2()
         {
              EnglishStoriesParameters englishStoriesParameters = new EnglishStoriesParameters();
-            englishStoriesParameters.PagesSize = 2;
+            englishStoriesParameters.PagesSize = 4;
             englishStoriesParameters.PageNumber = 1;
             
             var pagedResult = _storyService.TGetAllBooksWithPaged(englishStoriesParameters);
