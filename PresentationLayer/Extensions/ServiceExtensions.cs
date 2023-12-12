@@ -8,6 +8,7 @@ using DataAccessLayer.Abstract.Spanish;
 using DataAccessLayer.EnttiyFramework;
 using DataAccessLayer.EnttiyFramework.EfSpanish;
 using DataAccessLayer.EnttiyFramework.French;
+using Marvin.Cache.Headers;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace PresentationLayer.Extensions
@@ -52,6 +53,41 @@ namespace PresentationLayer.Extensions
             services.AddScoped<IMailService,MailManager>();
 
             services.AddSingleton<ILoggerService, LoggerManager>();
+        }
+
+        public static void ConfigureCors(this IServiceCollection services)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .WithExposedHeaders("X-Pagination");
+                });
+            });
+        }
+        public static void ConfigureResponseCaching(this IServiceCollection services)
+        {
+            services.AddResponseCaching();
+        }
+
+        public static void ConfigureHttpCacheHeaders(this IServiceCollection services)
+        {
+            services.AddHttpCacheHeaders(exprationOpt =>
+            {
+                exprationOpt.MaxAge = 90;
+                exprationOpt.CacheLocation = CacheLocation.Public;
+        
+            },
+            validationOpt =>
+            {
+                validationOpt.MustRevalidate = false; 
+                //Same value have not to validate again
+            }
+           
+            );
         }
     }
 }

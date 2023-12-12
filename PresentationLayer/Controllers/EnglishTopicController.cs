@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationLayer.Controllers
 {
+    //[ResponseCache(CacheProfileName="5mins")]
     public class EnglishTopicController : Controller
     {
         private readonly IEnglishTopicNameService _englishTopicNameService;
@@ -14,7 +15,7 @@ namespace PresentationLayer.Controllers
             _englishLessonContentService = englishLessonContentService;
         }
 
-
+        //[ResponseCache(Duration = 60)]
         public IActionResult Index()
         {
             var values = _englishTopicNameService.GetAll();

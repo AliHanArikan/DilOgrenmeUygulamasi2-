@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract.Spanish;
+using EntityLayer.RequestFeatures;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationLayer.Controllers
@@ -17,7 +18,12 @@ namespace PresentationLayer.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var values = _spanishStoryService.GetAll();
+            //var values = _spanishStoryService.GetAll();
+            //return View(values);
+            SpanishStoriesParameters spans = new SpanishStoriesParameters();
+            spans.PagesSize = 2;
+            spans.PageNumber = 1;
+            var values = _spanishStoryService.TGetAllBooksWithPaged(spans);
             return View(values);
         }
 

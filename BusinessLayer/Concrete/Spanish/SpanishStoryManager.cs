@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Abstract.Spanish;
 using DataAccessLayer.Abstract.Spanish;
 using EntityLayer.Concrete;
+using EntityLayer.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,11 @@ namespace BusinessLayer.Concrete.Spanish
         public void TDelete(SpanishStory t)
         {
             _spanishStoryDal.Delete(t);
+        }
+
+        public PagedList<SpanishStory> TGetAllBooksWithPaged(SpanishStoriesParameters spanishStoriesParameters)
+        {
+            return _spanishStoryDal.GetAllBooksWithPaged(spanishStoriesParameters);
         }
 
         public SpanishStory TGetByID(int id)

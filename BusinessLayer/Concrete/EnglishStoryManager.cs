@@ -39,9 +39,11 @@ namespace BusinessLayer.Concrete
             _englishStoryDal.Delete(t);
         }
 
-        public IEnumerable<EnglishStory> TGetAllBooksWithPaged(EnglishStoriesParameters englishStoriesParameters)
+        public async Task<(IEnumerable<EnglishStory>, MetaData metaData)> TGetAllBooksWithPaged(EnglishStoriesParameters englishStoriesParameters)
         {
-            return _englishStoryDal.GetAllBooksWithPaged(englishStoriesParameters);
+          
+            var englishStoriesWithMetaData =  _englishStoryDal.GetAllBooksWithPaged(englishStoriesParameters);
+            return (englishStoriesWithMetaData, englishStoriesWithMetaData.MetaData);
         }
 
         public EnglishStory TGetByID(int id)

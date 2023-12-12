@@ -1,10 +1,14 @@
 ﻿using BusinessLayer.Abstract;
 using EntityLayer.Exceptions;
 using EntityLayer.RequestFeatures;
+using Marvin.Cache.Headers;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace PresentationLayer.Controllers
 {
+    //[ResponseCache(CacheProfileName ="5mins")]
+   // [HttpCacheExpiration(CacheLocation =CacheLocation.Public, MaxAge= 80)]
     public class EnglishStroyController : Controller
     {
         private readonly IEnglishStoryService _storyService;
@@ -52,8 +56,10 @@ namespace PresentationLayer.Controllers
              EnglishStoriesParameters englishStoriesParameters = new EnglishStoriesParameters();
             englishStoriesParameters.PagesSize = 2;
             englishStoriesParameters.PageNumber = 1;
-            var values = _storyService.TGetAllBooksWithPaged(englishStoriesParameters); 
-            return View(values);
+            
+            var pagedResult = _storyService.TGetAllBooksWithPaged(englishStoriesParameters);
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResult.Result.metaData));
+            return View(pagedResult.Result.Item1);
         }
 
         [HttpPost]

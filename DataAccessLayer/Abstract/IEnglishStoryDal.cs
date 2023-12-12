@@ -12,7 +12,7 @@ namespace DataAccessLayer.Abstract
     {
         public void UpdateImageUrlAndStoyNameWithStoryName(string name);
 
-        public  IEnumerable<EnglishStory> GetAllBooksWithPaged(EnglishStoriesParameters englishStoriesParameters);
+        public  PagedList<EnglishStory> GetAllBooksWithPaged(EnglishStoriesParameters englishStoriesParameters);
 
     }
 }

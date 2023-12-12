@@ -10,7 +10,7 @@ namespace BusinessLayer.Abstract
 {
     public interface IEnglishStoryService: IGenericService<EnglishStory>
     {
-        public IEnumerable<EnglishStory> TGetAllBooksWithPaged(EnglishStoriesParameters englishStoriesParameters);
+        public Task<(IEnumerable<EnglishStory>,MetaData metaData)> TGetAllBooksWithPaged(EnglishStoriesParameters englishStoriesParameters);
 
     }
 }

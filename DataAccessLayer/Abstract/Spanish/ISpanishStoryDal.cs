@@ -1,5 +1,7 @@
-﻿using DataAccessLayer.Repositories;
+﻿using DataAccessLayer.Concrete;
+using DataAccessLayer.Repositories;
 using EntityLayer.Concrete;
+using EntityLayer.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +12,7 @@ namespace DataAccessLayer.Abstract.Spanish
 {
     public interface ISpanishStoryDal : IGenericDal<SpanishStory>
     {
+        public PagedList<SpanishStory> GetAllBooksWithPaged(SpanishStoriesParameters spanishStoriesParameters);
+        
     }
 }

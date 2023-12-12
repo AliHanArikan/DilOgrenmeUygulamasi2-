@@ -13,16 +13,14 @@ namespace DataAccessLayer.EnttiyFramework
 {
     public class EfEnglishStoryDal : GenericRepository<EnglishStory>, IEnglishStoryDal
     {
-        public IEnumerable<EnglishStory> GetAllBooksWithPaged(EnglishStoriesParameters englishStoriesParameters)
+        public PagedList<EnglishStory> GetAllBooksWithPaged(EnglishStoriesParameters englishStoriesParameters)
         {
             using(var context = new Context())
             {
-              var values =  context.EnglishStroies.ToList()
-                    .OrderBy(b => b.EnglishStoryID)
-                    .Skip((englishStoriesParameters.PageNumber - 1) * englishStoriesParameters.PagesSize)
-                    .Take(englishStoriesParameters.PagesSize)
-                    .ToList();
-                return values;
+                var values = context.EnglishStroies.ToList();
+                   // .OrderBy(b => b.EnglishStoryID)
+                   
+                return PagedList<EnglishStory>.ToPagedList(values, englishStoriesParameters.PageNumber, englishStoriesParameters.PagesSize);
 
             }
         }
