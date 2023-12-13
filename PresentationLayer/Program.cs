@@ -5,9 +5,11 @@ using BusinessLayer.Concrete.Spanish;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Abstract.French;
 using DataAccessLayer.Abstract.Spanish;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EnttiyFramework;
 using DataAccessLayer.EnttiyFramework.EfSpanish;
 using DataAccessLayer.EnttiyFramework.French;
+using EntityLayer.Concrete;
 using FluentValidation.AspNetCore;
 using PresentationLayer.Extensions;
 
@@ -19,6 +21,9 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.ConfigureCors();
 builder.Services.ConfigureResponseCaching();
 builder.Services.ConfigureHttpCacheHeaders();
+builder.Services.AddDbContext<Context>();
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
+
 
 
 builder.Services.ConfigureService();

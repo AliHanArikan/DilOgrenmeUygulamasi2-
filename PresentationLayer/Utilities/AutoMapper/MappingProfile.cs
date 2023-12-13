@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DtoLayer.Dtos.AdminDtos;
 using DtoLayer.Dtos.EnglishStoryDetailsDtos;
 using DtoLayer.Dtos.EnglishStoryDtos;
 using EntityLayer.Concrete;
@@ -14,6 +15,9 @@ namespace PresentationLayer.Utilities.AutoMapper
 
             CreateMap<EnglishStory, EnglishStoryDto>();
             CreateMap<EnglishStoryDto, EnglishStory>();
+
+            CreateMap<AppUser,AdminRegisterDto>();
+            CreateMap<AdminRegisterDto, AppUser>();
         
         }
     }
