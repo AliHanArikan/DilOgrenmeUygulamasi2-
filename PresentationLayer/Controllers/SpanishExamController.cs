@@ -1,8 +1,10 @@
 ﻿using BusinessLayer.Abstract.Spanish;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationLayer.Controllers
 {
+    [AllowAnonymous]
     public class SpanishExamController : Controller
     {
         private readonly ISpanishExamService _spanishExamService;

@@ -2,6 +2,7 @@
 using EntityLayer.Exceptions;
 using EntityLayer.RequestFeatures;
 using Marvin.Cache.Headers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
@@ -9,6 +10,7 @@ namespace PresentationLayer.Controllers
 {
     //[ResponseCache(CacheProfileName ="5mins")]
     //[HttpCacheExpiration(CacheLocation =CacheLocation.Public, MaxAge= 80)]
+    [AllowAnonymous]
     public class EnglishStroyController : Controller
     {
         private readonly IEnglishStoryService _storyService;

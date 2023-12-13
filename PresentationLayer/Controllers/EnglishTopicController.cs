@@ -1,9 +1,11 @@
 ﻿using BusinessLayer.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationLayer.Controllers
 {
     //[ResponseCache(CacheProfileName="5mins")]
+    [AllowAnonymous]
     public class EnglishTopicController : Controller
     {
         private readonly IEnglishTopicNameService _englishTopicNameService;

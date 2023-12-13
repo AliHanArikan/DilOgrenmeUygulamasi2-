@@ -1,9 +1,11 @@
 ﻿using BusinessLayer.Abstract.Spanish;
 using EntityLayer.RequestFeatures;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationLayer.Controllers
 {
+    [AllowAnonymous]
     public class SpanishStoryController : Controller
     {
         private readonly ISpanishStoryService _spanishStoryService;

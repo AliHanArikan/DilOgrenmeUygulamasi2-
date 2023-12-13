@@ -11,6 +11,8 @@ using DataAccessLayer.EnttiyFramework.EfSpanish;
 using DataAccessLayer.EnttiyFramework.French;
 using EntityLayer.Concrete;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using PresentationLayer.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +29,14 @@ builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Contex
 
 
 builder.Services.ConfigureService();
+
+builder.Services.AddMvc(config =>
+{
+    var policy = new AuthorizationPolicyBuilder()
+    .RequireAuthenticatedUser()
+    .Build();
+    config.Filters.Add(new AuthorizeFilter(policy));
+});
 
 var app = builder.Build();
 
@@ -48,10 +58,13 @@ if (app.Environment.IsProduction())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseAuthentication();
+
 app.UseRouting();
 
 app.UseCors("CorsPolicy");
 app.UseResponseCaching();
+app.UseHttpCacheHeaders();
 app.UseHttpCacheHeaders();
 
 app.UseAuthorization();
