@@ -88,7 +88,7 @@
             <button class="btn" id="Dbtn">Answer 4</button>
         </div>
         <button id="next-btn">Next</button>
-        <button class="btn btn-primary" id="sonraki-soru" >Sonraki Soru</button>
+        <button class="btn btn-primary" id="sonra" >Sonraki Soru</button>
     </div>
 </div>
 
@@ -119,6 +119,24 @@
             cevapD: iter[1].SpanishExamOptionD,
 
             Dogrucevap: iter[1].SpanishExamCorrect,
+        },
+        {
+            question: iter[2].SpanishExamDescription,
+            cevapA: iter[2].SpanishExamOptionA,
+            cevapB: iter[2].SpanishExamOptionB,
+            cevapC: iter[2].SpanishExamOptionC,
+            cevapD: iter[2].SpanishExamOptionD,
+
+            Dogrucevap: iter[2].SpanishExamCorrect,
+        },
+        {
+            question: iter[3].SpanishExamDescription,
+            cevapA: iter[3].SpanishExamOptionA,
+            cevapB: iter[3].SpanishExamOptionB,
+            cevapC: iter[3].SpanishExamOptionC,
+            cevapD: iter[3].SpanishExamOptionD,
+
+            Dogrucevap: iter[3].SpanishExamCorrect,
         },
         
        
@@ -206,8 +224,19 @@
             Dbtn.style.backgroundColor = "red";
         }
     });
-   
-
+    $('#sonra').click(function () {
+        currentQuestionIndex = currentQuestionIndex + 1;
+        console.log(currentQuestionIndex);
+        resetCss();
+        showQuestion();
+    });
+    
+    function resetCss() {
+        Abtn.style.backgroundColor = "white";
+        Bbtn.style.backgroundColor = "white";
+        Cbtn.style.backgroundColor = "white";
+        Dbtn.style.backgroundColor = "white";
+    }
     function resetState() {
         nextButton.style.display = "none";
         
