@@ -24,7 +24,7 @@ namespace PresentationLayer.Areas.AdminArea.Controllers
         }
 
         [HttpGet]
-        
+        [Route("Index")]
         public IActionResult Index()
         {
             var values = _englishStoryService.GetAll();
@@ -34,7 +34,7 @@ namespace PresentationLayer.Areas.AdminArea.Controllers
        
         [HttpGet]
         
-       // [Route("UpdateStoryDetails/{id}")]
+       [Route("UpdateStoryDetails/{id}")]
         public IActionResult UpdateStoryDetails(int id)
         {
             var valueName = _englishStoryService.TGetByID(id).EnglishStoryName;
@@ -65,7 +65,7 @@ namespace PresentationLayer.Areas.AdminArea.Controllers
 
             _englishStoryDetailsService.TUpdate(valueEnglishStoryDetails);
             
-            return RedirectToAction("Index", "EnglishStoriesAdmin");
+            return RedirectToAction("Index", "EnglishStoriesAdmin",new {Area = "AdminArea"});
         }
 
         [HttpGet]

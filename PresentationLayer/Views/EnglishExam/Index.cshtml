@@ -125,6 +125,33 @@
 
             Dogrucevap: iter[1].EnglishExamCorrect,
         },
+         {
+            question: iter[2].EnglishExamDescription,
+            cevapA: iter[2].EnglishExamOptionA,
+            cevapB: iter[2].EnglishExamOptionB,
+            cevapC: iter[2].EnglishExamOptionC,
+            cevapD: iter[2].EnglishExamOptionD,
+
+            Dogrucevap: iter[2].EnglishExamCorrect,
+        },
+        {
+            question: iter[3].EnglishExamDescription,
+            cevapA: iter[3].EnglishExamOptionA,
+            cevapB: iter[3].EnglishExamOptionB,
+            cevapC: iter[3].EnglishExamOptionC,
+            cevapD: iter[3].EnglishExamOptionD,
+
+            Dogrucevap: iter[3].EnglishExamCorrect,
+        },
+        {
+            question: iter[4].EnglishExamDescription,
+            cevapA: iter[4].EnglishExamOptionA,
+            cevapB: iter[4].EnglishExamOptionB,
+            cevapC: iter[4].EnglishExamOptionC,
+            cevapD: iter[4].EnglishExamOptionD,
+
+            Dogrucevap: iter[4].EnglishExamCorrect,
+        },
 
 
 
@@ -215,7 +242,13 @@
         currentQuestionIndex = currentQuestionIndex + 1;
         console.log(currentQuestionIndex);
         resetCss();
-        showQuestion();
+        if (currentQuestionIndex == 5) {
+            alert("Soru Bitti. Lütfen hikaye sayfasına geri dönünüz");
+        }
+        else{
+            showQuestion();
+        }
+        
     });
 
     function resetCss() {

@@ -16,7 +16,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h2 class="text-center">Giriş Yap</h2>
+            <h2 class="text-center">Admin Başvuru</h2>
             <form method="post">
                 <div class="form-group">
                     <label for="email">İsim:</label>
@@ -25,6 +25,10 @@
                 <div class="form-group">
                     <label>Soyad</label>
                     <input type="text" class="form-control" asp-for="Surname" placeholder="Soyadınızı girin">
+                </div>
+                <div class="form-group">
+                    <label>Soyad</label>
+                    <input type="text" class="form-control" asp-for="UserName" placeholder="Soyadınızı girin">
                 </div>
                 <div class="form-group">
                     <label>Soyad</label>
@@ -44,7 +48,7 @@
                 </div>
                 <div class="form-group">
                     <label for="pwd">Şifre:</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Şifrenizi girin">
+                    <input type="password" class="form-control" asp-for="Password" placeholder="Şifrenizi girin">
                 </div>
                 <button type="submit" class="btn btn-primary">Kayıt Ol</button>
             </form>

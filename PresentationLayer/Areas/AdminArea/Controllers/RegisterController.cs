@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using DtoLayer.Dtos.AdminDtos;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationLayer.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
+    [AllowAnonymous]
     public class RegisterController : Controller
     {
 
