@@ -77,7 +77,7 @@ namespace PresentationLayer.Extensions
         {
             services.AddHttpCacheHeaders(exprationOpt =>
             {
-                exprationOpt.MaxAge = 90;
+                exprationOpt.MaxAge = 30;
                 exprationOpt.CacheLocation = CacheLocation.Public;
         
             },
