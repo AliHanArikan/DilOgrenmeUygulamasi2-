@@ -17,20 +17,27 @@
             <div class="card-body">
                 
                 <div class="conteiner row">
-                    <div class="col-8 bg-light" height="">
+                    <div class="col-12 bg-light" height="">
                         <p class="bg-gradient"> @Model.EnglishStoryDetailsContent</p>
                     </div>
 
-
-                    <div class="col-4 bg-secondary rounded-2">
+                    
+                    @* <div class="col-4 rounded-2">
                         <h5>Sorular @ViewBag.x</h5>
+                        <a class="btn btn-warning" href="/SpanishExam/EnglishExam/@ViewBag.x">Soru Çöz</a>
+                         @await Component.InvokeAsync("_StroyExamPartial2", new { name = ViewBag.x })
+                        <h5 class="card-title"><a class="btn btn-warning" href="/EnglishStroy/EnglishStoryDetails2/@item.EnglishStoryID">@item.EnglishStoryName</a></h5>
 
-                        @await Component.InvokeAsync("_StroyExamPartial2", new { name = ViewBag.x })
-
-                    </div>
+                        </div>*@
                 </div>
             </div>
         </div>
     </div>
 </div>
+<a class="btn btn-warning pb-3 m-b3" href="/EnglishExam/Index/@ViewBag.x">Soru Çöz</a>
+<br />
+<a class="btn btn-warning pb-3 m-b3" href="/EnglishExam/Index/@ViewBag.x">Soru Çöz</a>
+<a class="btn btn-warning pb-3 m-b3" href="/EnglishExam/Index/@ViewBag.x">Soru Çöz</a>
+
+
 

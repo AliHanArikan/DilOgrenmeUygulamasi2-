@@ -1,0 +1,235 @@
+﻿@using EntityLayer.Concrete;
+@using Newtonsoft.Json;
+@model List<EnglishExamContent>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/MainPage/Index.cshtml";
+    List<EnglishExamContent> quest = new List<EnglishExamContent>();
+    quest = Model;
+}
+
+
+
+<style>
+
+    body {
+        background: #001e4d;
+    }
+
+    .app {
+        background: #fff;
+        width: 90%;
+        max-width: 600px;
+        margin: 100px auto 0;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+        .app h1 {
+            font-size: 25px;
+            color: #001e4d;
+            font-weight: 600;
+            border-bottom: 1px solid #333;
+            padding-bottom: 30px;
+        }
+
+    .quiz {
+        padding: 20px 0;
+    }
+
+        .quiz h2 {
+            font-size: 18px;
+            color: #001e4d;
+            font-weight: 600;
+        }
+
+    .btn {
+        background: #fff;
+        color: #222;
+        font-weight: 500;
+        width: 100%;
+        border: 1px solid #222;
+        padding: 10px;
+        margin: 10px 0;
+        text-align: left;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+        .btn:hover {
+            background: #222;
+            color: #fff;
+        }
+
+    #next-btn {
+        /* background: #001e4d; */
+        /*  color: #fff; */
+        font-weight: 500;
+        width: 150px;
+        border: 0;
+        padding: 10px;
+        margin: 20px auto;
+        border-radius: 4px;
+        cursor: pointer;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+</style>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<div class="app">
+    <h1>Simple Quiz</h1>
+    <div class="quiz">
+        <h2 id="question">Question goes here</h2>
+        <div class="answer-buttons">
+            <button class="btn" id="Abtn">Answer 1</button>
+            <button class="btn" id="Bbtn">Answer 2</button>
+            <button class="btn" id="Cbtn">Answer 3</button>
+            <button class="btn" id="Dbtn">Answer 4</button>
+        </div>
+        <button id="next-btn">Next</button>
+        <button class="btn btn-primary" id="sonra">Sonraki Soru</button>
+    </div>
+</div>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script>
+    var iter = JSON.parse('@Html.Raw(JsonConvert.SerializeObject(quest))');
+    console.log(iter);
+
+    const questions = [
+        {
+            
+            question: iter[0].EnglishExamDescription,
+            cevapA: iter[0].EnglishExamOptionA,
+            cevapB: iter[0].EnglishExamOptionB,
+            cevapC: iter[0].EnglishExamOptionC,
+            cevapD: iter[0].EnglishExamOptionD,
+
+            Dogrucevap: iter[0].EnglishExamCorrect,
+        },
+        {
+            question: iter[1].EnglishExamDescription,
+            cevapA: iter[1].EnglishExamOptionA,
+            cevapB: iter[1].EnglishExamOptionB,
+            cevapC: iter[1].EnglishExamOptionC,
+            cevapD: iter[1].EnglishExamOptionD,
+
+            Dogrucevap: iter[1].EnglishExamCorrect,
+        },
+
+
+
+    ];
+
+
+
+    console.log(questions)
+    const questionElement = document.getElementById('question');
+    //const answerButtonA = document.getElementById('answer-button');
+    const Abtn = document.getElementById('Abtn');
+    const Bbtn = document.getElementById('Bbtn');
+    const Cbtn = document.getElementById('Cbtn');
+    const Dbtn = document.getElementById('Dbtn');
+    const nextButton = document.getElementById('next-btn');
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function startQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        nextButton.innerHTML = "Next";
+        showQuestion();
+    }
+
+    function showQuestion() {
+        resetState();
+        let currentQuestion = questions[currentQuestionIndex];
+        let questionNo = currentQuestionIndex + 1;
+        questionElement.innerHTML = questionNo + "." + currentQuestion.question
+        Abtn.innerHTML = currentQuestion.cevapA;
+        Bbtn.innerHTML = currentQuestion.cevapB;
+        Cbtn.innerHTML = currentQuestion.cevapC;
+        Dbtn.innerHTML = currentQuestion.cevapD;
+
+        /* Abtn.addEventListener("click", selectAnswer); */
+
+
+    }
+
+
+    $("#next-btn").click(function () {
+        currentQuestionIndex++;
+        showQuestion();
+    });
+    $("#Abtn").click(function () {
+
+
+        let metinA = Abtn.value;
+
+        if (metinA === questions[currentQuestionIndex].Dogrucevap) {
+            Abtn.style.backgroundColor = "green";
+        } else {
+            Abtn.style.backgroundColor = "red";
+        }
+    });
+    $("#Bbtn").click(function () {
+
+        let metinB = Bbtn.value;
+        console.log(questions[currentQuestionIndex].Dogrucevap)
+
+        if (metinB === questions[currentQuestionIndex].Dogrucevap) {
+            Bbtn.style.backgroundColor = "green";
+        } else {
+            Bbtn.style.backgroundColor = "red";
+        }
+    });
+    $("#Cbtn").click(function () {
+        let metinC = Cbtn.value.toString();
+
+        if (metinC.localeCompare(questions[currentQuestionIndex].Dogrucevap)) {
+            Cbtn.style.backgroundColor = "green";
+        } else {
+            Cbtn.style.backgroundColor = "red";
+        }
+    });
+    $("#Dbtn").click(function () {
+        let metinD = Dbtn.innerHTML;
+        console.log(metinD);
+        if (metinD.localeCompare(questions[currentQuestionIndex].Dogrucevap)) {
+            Dbtn.style.backgroundColor = "green";
+        } else {
+            Dbtn.style.backgroundColor = "red";
+        }
+    });
+    $('#sonra').click(function () {
+        currentQuestionIndex = currentQuestionIndex + 1;
+        console.log(currentQuestionIndex);
+        resetCss();
+        showQuestion();
+    });
+
+    function resetCss() {
+        Abtn.style.backgroundColor = "white";
+        Bbtn.style.backgroundColor = "white";
+        Cbtn.style.backgroundColor = "white";
+        Dbtn.style.backgroundColor = "white";
+    }
+    function resetState() {
+        nextButton.style.display = "none";
+
+    }
+    startQuiz();
+
+</script>
+
+

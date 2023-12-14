@@ -29,6 +29,11 @@ namespace PresentationLayer.Controllers
             return View(values);
         }
 
+        public IActionResult GetSpanishVocabulary()
+        {
+            return View();
+        }
+
        
 
 

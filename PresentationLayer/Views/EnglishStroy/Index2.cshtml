@@ -1,6 +1,8 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @using EntityLayer.Concrete;
-@model List<EnglishStory>
+@using EntityLayer.RequestFeatures;
+@model List<EnglishStory>;
+
 @{
     ViewData["Title"] = "Index2";
     Layout = "~/Views/MainPage/Index.cshtml";
@@ -138,20 +140,20 @@
         <!-- END w3-content -->
     </div>
 
-    <form  >
+    <form method="post" >
         <nav aria-label="...">
             <ul class="pagination">
                 <li class="page-item disabled">
                     <span class="page-link">Previous</span>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active">
+                <li class="page-item" id="1"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active" id="2">
                     <span class="page-link">
                         2
                         <span class="sr-only">(current)</span>
                     </span>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item" id="3"><a class="page-link" href="#">3</a></li>
                 <li class="page-item">
                     <a class="page-link" href="#">Next</a>
                 </li>
@@ -169,4 +171,17 @@
 </body>
 </html>
 
-
+@* <script>
+    let value = document.getElementById('pagination')
+    $.ajax({
+        url: '/EnglishStroy/Index2',
+        type: 'POST',
+        data: { param1: 'value1', param2: 'value2' },
+        success: function (result) {
+            // İşlem başarılı olduğunda yapılacak işlemler
+        },
+        error: function (xhr, status, error) {
+            // İşlem başarısız olduğunda yapılacak işlemler
+        }
+    });
+</script> *@
