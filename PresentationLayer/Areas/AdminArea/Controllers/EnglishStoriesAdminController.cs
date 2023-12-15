@@ -96,7 +96,7 @@ namespace PresentationLayer.Areas.AdminArea.Controllers
                 var englishStory = _mapper.Map<EnglishStory>(englishStoryDto);
 
                 _englishStoryService.TUpdate(englishStory);
-                return RedirectToAction("Index", "EnglishStoriesAdmin");
+                return RedirectToAction("Index", "EnglishStoriesAdmin", new { Area= "AdminArea"});
             }
             return View();
             

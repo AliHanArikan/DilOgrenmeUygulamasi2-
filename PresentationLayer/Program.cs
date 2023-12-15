@@ -65,7 +65,7 @@ app.UseRouting();
 app.UseCors("CorsPolicy");
 app.UseResponseCaching();
 app.UseHttpCacheHeaders();
-app.UseHttpCacheHeaders();
+
 
 app.UseAuthorization();
 

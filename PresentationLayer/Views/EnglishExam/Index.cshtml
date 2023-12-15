@@ -201,38 +201,39 @@
     $("#Abtn").click(function () {
 
 
-        let metinA = Abtn.value;
-
-        if (metinA === questions[currentQuestionIndex].Dogrucevap) {
-            Abtn.style.backgroundColor = "green";
+        let metinA = Abtn.innerText
+        console.log(metinA)
+        console.log(questions[currentQuestionIndex].Dogrucevap)
+        if (metinA == (questions[currentQuestionIndex].Dogrucevap)) {
+            Abtn.style.backgroundColor = "green"
         } else {
-            Abtn.style.backgroundColor = "red";
+            Abtn.style.backgroundColor = "red"
         }
     });
     $("#Bbtn").click(function () {
 
-        let metinB = Bbtn.value;
-        console.log(questions[currentQuestionIndex].Dogrucevap)
+        let metinB = Bbtn.innerText
+       
 
-        if (metinB === questions[currentQuestionIndex].Dogrucevap) {
+        if ((metinB == questions[currentQuestionIndex].Dogrucevap)) {
             Bbtn.style.backgroundColor = "green";
         } else {
             Bbtn.style.backgroundColor = "red";
         }
     });
     $("#Cbtn").click(function () {
-        let metinC = Cbtn.value.toString();
+        let metinC = Cbtn.innerText
 
-        if (metinC.localeCompare(questions[currentQuestionIndex].Dogrucevap)) {
+        if ((metinC == (questions[currentQuestionIndex].Dogrucevap))) {
             Cbtn.style.backgroundColor = "green";
         } else {
             Cbtn.style.backgroundColor = "red";
         }
     });
     $("#Dbtn").click(function () {
-        let metinD = Dbtn.innerHTML;
+        let metinD = Dbtn.innerText
         console.log(metinD);
-        if (metinD.localeCompare(questions[currentQuestionIndex].Dogrucevap)) {
+        if ((metinD ==(questions[currentQuestionIndex].Dogrucevap))) {
             Dbtn.style.backgroundColor = "green";
         } else {
             Dbtn.style.backgroundColor = "red";
